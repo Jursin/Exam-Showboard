@@ -124,7 +124,7 @@ $ yarn build:linux
 
 ## Stars 历史
 
-[![Star 历史](https://starchart.cc/MKStoler4096/dsz-exam-showboard-next.svg?variant=adaptive)](https://starchart.cc/MKStoler4096/dsz-exam-showboard-next/stargazers)
+[![Star 历史](https://starchart.cc/MKStoler4096/dsz-exam-showboard-next.svg?variant=adaptive)](https://starchart.cc/MKStoler4096/dsz-exam-showboard-next)
 
 <div align="center">
 
