@@ -13,8 +13,8 @@
           >
             <template #item="{ item, index }">
               <tr>
-                <!-- 只在第一个考试项中显示日期和时间段 -->
-                <td v-if="item.showDate" class="text-h5 date-column" :rowspan="item.rowspan">
+                <!-- 根据配置显示或隐藏日期列 -->
+                <td v-if="showDateColumn && item.showDate" class="text-h5 date-column" :rowspan="item.rowspan">
                   {{ item.date }}<br>{{ item.period }}
                 </td>
                 <td class="text-h5">{{ item.name }}</td>
@@ -28,7 +28,7 @@
               </tr>
             </template>
             <template #header.date>
-              <span class="text-h5 font-weight-bold">日期</span>
+              <span v-if="showDateColumn" class="text-h5 font-weight-bold">日期</span>
             </template>
             <template #header.name>
               <span class="text-h5 font-weight-bold">科目</span>
@@ -56,6 +56,10 @@ const props = defineProps({
   exam: {
     type: Array as () => any[],
     default: () => []
+  },
+  showDateColumn: {
+    type: Boolean,
+    default: true // 默认显示日期列
   }
 });
 
@@ -77,7 +81,7 @@ const groupedExams = computed(() => {
   let currentDate = '';
   let currentPeriod = '';
 
-  sortedExams.value.forEach((exam, index) => {
+  sortedExams.value.forEach((exam) => {
     const examDate = new Date(exam.start).toLocaleDateString('zh-CN', {
       month: 'numeric',
       day: 'numeric'
