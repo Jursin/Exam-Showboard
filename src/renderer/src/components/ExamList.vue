@@ -1,194 +1,195 @@
 <template>
-  <v-card class="mx-auto" max-width="600">
-    <v-container fluid>
-      <v-row justify="center">
-        <v-col cols="12">
-          <v-data-table
-            :items="groupedExams"
-            :headers="headers"
-            item-key="name"
-            hide-default-footer
-            dense
-            class="text-h5"
-          >
-            <template #item="{ item, index }">
-              <tr>
-                <!-- 根据配置显示或隐藏日期列 -->
-                <td
-                  v-if="showDateColumn && item.showDate"
-                  class="text-h5 date-column border-right"
-                  :rowspan="item.rowspan"
-                >
-                  {{ item.date }}<br>{{ item.period }}
-                </td>
-                <td class="text-h5 text-center">{{ item.name }}</td>
-                <td class="text-h5 text-center">{{ formatTime(item.start) }}</td>
-                <td class="text-h5 text-center">{{ formatTime(item.end) }}</td>
-                <td class="text-center">
-                  <v-chip :color="getStatusColor(item)" dark class="exam-status-chip">
-                    {{ getStatusText(item) }}
-                  </v-chip>
-                </td>
-              </tr>
-            </template>
-            <template #header.date>
-              <span v-if="showDateColumn" class="text-h5 font-weight-bold text-center">日期</span>
-            </template>
-            <template #header.name>
-              <span class="text-h5 font-weight-bold text-center">科目</span>
-            </template>
-            <template #header.start>
-              <span class="text-h5 font-weight-bold text-center">开始</span>
-            </template>
-            <template #header.end>
-              <span class="text-h5 font-weight-bold text-center">结束</span>
-            </template>
-            <template #header.status>
-              <span class="text-h5 font-weight-bold text-center">状态</span>
-            </template>
-          </v-data-table>
-        </v-col>
-      </v-row>
-    </v-container>
+  <v-card v-if="exam" class="mx-auto pa-4 subject-info-card" max-width="600" elevation="12">
+    <v-card-text>
+      <div class="text-h5 text-white">
+        当前科目: <span class="text-h5 ml-2">{{ exam.name }}</span>
+      </div>
+      <div class="text-h5 text-white mt-2">
+        考试时间: {{ formatDateTime(exam.start) }} ~ {{ formatDateTime(exam.end) }}
+      </div>
+      <div class="text-h5 mt-2">
+        考试状态: <span :class="statusColor">{{ statusText }}</span>
+      </div>
+      <div v-if="showRemainingTime" class="text-h5 text-white mt-2">
+        剩余时间: {{ remainingTime }}
+      </div>
+      <div v-if="isWarning" class="text-h5 text--red mt-1">考试即将结束</div>
+      <div v-if="showCountdown" class="text-h5 mt-2" :class="{'text--red': countdownIsRed}">
+        倒计时: {{ countdown }}
+      </div>
+      <div v-if="exam.roomNumber" class="text-h5 text-white mt-4">
+        考场号: <span class="text-h5 ml-2">{{ exam.roomNumber }}</span>
+      </div>
+    </v-card-text>
+  </v-card>
+
+  <v-card v-else class="mx-auto pa-4 subject-info-card ended-card" max-width="600" elevation="12">
+    <v-card-title class="ended-text">考试已结束</v-card-title>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed } from 'vue';
 
 const props = defineProps({
   exam: {
-    type: Array as () => any[],
-    default: () => []
-  },
-  showDateColumn: {
-    type: Boolean,
-    default: true // 默认显示日期列
+    type: Object as () => { 
+      name: string; 
+      start: string; 
+      end: string; 
+      roomNumber: string; 
+    },
+    default: null
   }
 });
 
-const state = reactive({
-  exams: props.exam
-});
-
-function formatPeriod(isoString: string): string {
-  const hour = new Date(isoString).getHours();
-  if (hour < 12) return '上午';
-  else if (hour < 18) return '下午';
-  else return '晚上';
-}
-
-const groupedExams = computed(() => {
-  const grouped = [];
-  let currentDate = '';
-  let currentPeriod = '';
-
-  sortedExams.value.forEach((exam) => {
-    const examDate = new Date(exam.start).toLocaleDateString('zh-CN', {
-      month: 'numeric',
-      day: 'numeric'
-    }) + '日';
-    const period = formatPeriod(exam.start);
-
-    const showDate = examDate !== currentDate || period !== currentPeriod;
-
-    if (showDate) {
-      currentDate = examDate;
-      currentPeriod = period;
-
-      const rowspan = sortedExams.value.filter(e =>
-        new Date(e.start).toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }) + '日' === currentDate &&
-        formatPeriod(e.start) === currentPeriod
-      ).length;
-
-      grouped.push({ ...exam, date: examDate, period, showDate, rowspan });
-    } else {
-      grouped.push({ ...exam, date: examDate, period, showDate: false });
-    }
-  });
-
-  return grouped;
-});
-
-const headers = [
-  { text: '日期', value: 'date', sortable: false },
-  { text: '科目', value: 'name' },
-  { text: '开始', value: 'start', sortable: false },
-  { text: '结束', value: 'end', sortable: false },
-  { text: '状态', value: 'status', sortable: false }
-];
-
-const formatTime = (isoString: string) => {
-  const date = new Date(isoString);
-  return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+const config = {
+  examRoom: '101'
 };
 
-function getStatusColor(item: any): string {
-  const now = new Date();
-  const startTime = new Date(item.start);
-  const endTime = new Date(item.end);
-
-  if (now < startTime) return 'orange';
-  else if (now >= startTime && now <= endTime) return 'green';
-  else return 'red';
+if (props.exam) {
+  props.exam.roomNumber = config.examRoom;
 }
 
-function getStatusText(item: any): string {
-  const now = new Date();
-  const startTime = new Date(item.start);
-  const endTime = new Date(item.end);
-
-  if (now < startTime) {
-    return '未开始';
-  } else if (now >= startTime && now <= endTime) {
-    return '进行中';
-  } else {
-    return '已结束';
-  }
-}
-
-const sortedExams = computed(() => {
-  return state.exams.sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
-});
-
-onMounted(() => {
-  const interval = setInterval(() => {
-    state.exams = state.exams.map((exam) => ({
-      ...exam,
-      status: getStatusText(exam)
-    }));
-  }, 1000);
-
-  onUnmounted(() => {
-    clearInterval(interval);
+const formatDateTime = (isoString: string) =>
+  new Date(isoString).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit'
   });
+
+const now = ref(new Date());
+
+const statusColor = computed(() => {
+  if (!props.exam) return '';
+  const start = new Date(props.exam.start);
+  const end = new Date(props.exam.end);
+
+  if (now.value < start) return 'status-before';
+  if (now.value >= start && now.value < end) return 'status-middle';
+  if (now.value >= end) return 'status-after';
 });
+
+const statusText = computed(() => {
+  if (!props.exam) return '考试已结束';
+
+  const start = new Date(props.exam.start);
+  const end = new Date(props.exam.end);
+
+  if (now.value < start) return '未开始';
+  if (now.value >= start && now.value < end) return '进行中';
+  if (now.value >= end) return '已结束';
+});
+
+const isWarning = computed(() => {
+  if (!props.exam) return false;
+
+  const end = new Date(props.exam.end);
+  const fifteenMinutesBeforeEnd = new Date(end.getTime() - 15 * 60 * 1000);
+
+  return now.value >= fifteenMinutesBeforeEnd && now.value < end;
+});
+
+const showRemainingTime = computed(() => {
+  if (!props.exam) return false;
+
+  const start = new Date(props.exam.start);
+  const end = new Date(props.exam.end);
+
+  return now.value >= start && now.value < end;
+});
+
+const showCountdown = computed(() => {
+  if (!props.exam) return false;
+
+  const start = new Date(props.exam.start);
+  const fifteenMinutesBeforeStart = new Date(start.getTime() - 15 * 60 * 1000);
+
+  return now.value >= fifteenMinutesBeforeStart && now.value < start;
+});
+
+const remainingTime = computed(() => {
+  if (!props.exam) return '';
+
+  const end = new Date(props.exam.end);
+  const timeDiff = end.getTime() - now.value.getTime();
+  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+});
+
+const countdown = computed(() => {
+  if (!props.exam) return '';
+
+  const start = new Date(props.exam.start);
+  const timeDiff = start.getTime() - now.value.getTime();
+  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+});
+
+const countdownIsRed = computed(() => {
+  if (!props.exam) return false;
+
+  const start = new Date(props.exam.start);
+  const fifteenMinutesBeforeEnd = new Date(start.getTime() - 15 * 60 * 1000);
+
+  return now.value >= fifteenMinutesBeforeEnd && now.value < start;
+});
+
+const updateNow = () => {
+  now.value = new Date();
+};
+setInterval(updateNow, 1000);
+updateNow();
 </script>
 
 <style scoped>
 .text-h5 {
-  font-size: 1.8rem !important;
+  font-size: 2.5rem !important;
+  line-height: 1.5; /* 统一行距 */
 }
 
-.font-weight-bold {
+.text--red {
+  color: red;
+}
+
+.text-white {
+  color: white;
+}
+
+.status-before {
+  color: orange;
+}
+
+.status-middle {
+  color: green;
+}
+
+.status-after {
+  color: red;
+}
+
+.subject-info-card {
+  margin-top: 20px;
+}
+
+/* 结束考试的卡片样式 */
+.ended-card {
+  background-color: #f5f5f5;
+  height: 200px; /* 调整背景高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ended-text {
+  font-size: 3rem;
   font-weight: bold;
-}
-
-.exam-status-chip {
-  font-size: 1.5rem !important;
-}
-
-.text-center {
+  color: red;
   text-align: center;
-}
-
-.date-column {
-  white-space: nowrap;
-  width: 100px; /* 调整宽度使日期不换行 */
-  text-align: center;
-}
-
-.border-right {
-  border-right: 1px solid #e0e0e0; /* 日期列右侧分隔线 */
 }
 </style>
