@@ -14,13 +14,17 @@
             <template #item="{ item, index }">
               <tr>
                 <!-- 根据配置显示或隐藏日期列 -->
-                <td v-if="showDateColumn && item.showDate" class="text-h5 date-column" :rowspan="item.rowspan">
+                <td
+                  v-if="showDateColumn && item.showDate"
+                  class="text-h5 date-column border-right"
+                  :rowspan="item.rowspan"
+                >
                   {{ item.date }}<br>{{ item.period }}
                 </td>
-                <td class="text-h5">{{ item.name }}</td>
-                <td class="text-h5">{{ formatTime(item.start) }}</td>
-                <td class="text-h5">{{ formatTime(item.end) }}</td>
-                <td>
+                <td class="text-h5 text-center">{{ item.name }}</td>
+                <td class="text-h5 text-center">{{ formatTime(item.start) }}</td>
+                <td class="text-h5 text-center">{{ formatTime(item.end) }}</td>
+                <td class="text-center">
                   <v-chip :color="getStatusColor(item)" dark class="exam-status-chip">
                     {{ getStatusText(item) }}
                   </v-chip>
@@ -28,19 +32,19 @@
               </tr>
             </template>
             <template #header.date>
-              <span v-if="showDateColumn" class="text-h5 font-weight-bold">日期</span>
+              <span v-if="showDateColumn" class="text-h5 font-weight-bold text-center">日期</span>
             </template>
             <template #header.name>
-              <span class="text-h5 font-weight-bold">科目</span>
+              <span class="text-h5 font-weight-bold text-center">科目</span>
             </template>
             <template #header.start>
-              <span class="text-h5 font-weight-bold">开始</span>
+              <span class="text-h5 font-weight-bold text-center">开始</span>
             </template>
             <template #header.end>
-              <span class="text-h5 font-weight-bold">结束</span>
+              <span class="text-h5 font-weight-bold text-center">结束</span>
             </template>
             <template #header.status>
-              <span class="text-h5 font-weight-bold">状态</span>
+              <span class="text-h5 font-weight-bold text-center">状态</span>
             </template>
           </v-data-table>
         </v-col>
@@ -67,7 +71,6 @@ const state = reactive({
   exams: props.exam
 });
 
-// 辅助方法，用于格式化时间段为“上午/下午/晚上”
 function formatPeriod(isoString: string): string {
   const hour = new Date(isoString).getHours();
   if (hour < 12) return '上午';
@@ -75,7 +78,6 @@ function formatPeriod(isoString: string): string {
   else return '晚上';
 }
 
-// 按日期和时间段分组考试项
 const groupedExams = computed(() => {
   const grouped = [];
   let currentDate = '';
@@ -88,15 +90,13 @@ const groupedExams = computed(() => {
     }) + '日';
     const period = formatPeriod(exam.start);
 
-    // 检查日期和时间段是否相同
     const showDate = examDate !== currentDate || period !== currentPeriod;
 
     if (showDate) {
       currentDate = examDate;
       currentPeriod = period;
 
-      // 计算同日期和时间段考试项的合并行数
-      const rowspan = sortedExams.value.filter(e => 
+      const rowspan = sortedExams.value.filter(e =>
         new Date(e.start).toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }) + '日' === currentDate &&
         formatPeriod(e.start) === currentPeriod
       ).length;
@@ -110,7 +110,6 @@ const groupedExams = computed(() => {
   return grouped;
 });
 
-// 表头定义
 const headers = [
   { text: '日期', value: 'date', sortable: false },
   { text: '科目', value: 'name' },
@@ -119,13 +118,11 @@ const headers = [
   { text: '状态', value: 'status', sortable: false }
 ];
 
-// 时间格式化方法
 const formatTime = (isoString: string) => {
   const date = new Date(isoString);
   return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
 };
 
-// 获取状态颜色
 function getStatusColor(item: any): string {
   const now = new Date();
   const startTime = new Date(item.start);
@@ -136,7 +133,6 @@ function getStatusColor(item: any): string {
   else return 'red';
 }
 
-// 获取状态文本
 function getStatusText(item: any): string {
   const now = new Date();
   const startTime = new Date(item.start);
@@ -151,12 +147,10 @@ function getStatusText(item: any): string {
   }
 }
 
-// 按考试开始时间排序
 const sortedExams = computed(() => {
   return state.exams.sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
 });
 
-// 更新状态
 onMounted(() => {
   const interval = setInterval(() => {
     state.exams = state.exams.map((exam) => ({
@@ -184,10 +178,17 @@ onMounted(() => {
   font-size: 1.5rem !important;
 }
 
-/* 日期列样式 */
+.text-center {
+  text-align: center;
+}
+
 .date-column {
   white-space: nowrap;
   width: 100px; /* 调整宽度使日期不换行 */
   text-align: center;
+}
+
+.border-right {
+  border-right: 1px solid #e0e0e0; /* 日期列右侧分隔线 */
 }
 </style>
