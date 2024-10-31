@@ -10,14 +10,14 @@
       <div class="text-h5 mt-4">
         考试状态: <span :class="statusColor">{{ statusText }}</span>
       </div>
-      <div v-if="isWarning" class="text-h5 text--warning">考试即将结束</div>
-      <div v-if="showRemainingTime" class="text-h5 text--info">剩余时间: {{ remainingTime }}</div>
-      <div v-if="showCountdown" class="text-h5 text--info">倒计时: {{ countdown }}</div>
+      <div v-if="isWarning" class="text-h5 text--warning text--red">考试即将结束</div>
+      <div v-if="showRemainingTime" class="text-h5 text--red">剩余时间: {{ remainingTime }}</div>
+      <div v-if="showCountdown" class="text-h5 text--red">倒计时: {{ countdown }}</div>
     </v-card-text>
   </v-card>
 
-  <v-card v-else class="mx-auto pa-4 subject-info-card" max-width="600" elevation="12">
-    <v-card-title class="headline grey lighten-2"> 考试已结束 </v-card-title>
+  <v-card v-else class="mx-auto pa-4 subject-info-card ended-card" max-width="600" elevation="12">
+    <v-card-title class="ended-text">考试已结束</v-card-title>
   </v-card>
 </template>
 
@@ -132,6 +132,10 @@ updateNow();
   color: #17a2b8 !important; /* Info color */
 }
 
+.text--red {
+  color: red;
+}
+
 .status-before {
   color: orange;
 }
@@ -146,5 +150,21 @@ updateNow();
 
 .subject-info-card {
   margin-top: 20px;
+}
+
+/* 结束考试的卡片样式 */
+.ended-card {
+  background-color: #f5f5f5;
+  height: 200px; /* 调整背景高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ended-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: red;
+  text-align: center;
 }
 </style>
