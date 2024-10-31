@@ -1,9 +1,6 @@
 name: Build and Package Electron App
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
