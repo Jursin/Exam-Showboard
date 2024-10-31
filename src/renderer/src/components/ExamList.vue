@@ -14,7 +14,7 @@
             <template #item="{ item, index }">
               <tr>
                 <!-- 只在第一个考试项中显示日期和时间段 -->
-                <td v-if="item.showDate" class="text-h5" :rowspan="item.rowspan">
+                <td v-if="item.showDate" class="text-h5 date-column" :rowspan="item.rowspan">
                   {{ item.date }}<br>{{ item.period }}
                 </td>
                 <td class="text-h5">{{ item.name }}</td>
@@ -178,5 +178,12 @@ onMounted(() => {
 
 .exam-status-chip {
   font-size: 1.5rem !important;
+}
+
+/* 日期列样式 */
+.date-column {
+  white-space: nowrap;
+  width: 100px; /* 调整宽度使日期不换行 */
+  text-align: center;
 }
 </style>
