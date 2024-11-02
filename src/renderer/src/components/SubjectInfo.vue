@@ -1,18 +1,20 @@
 <template>
   <v-card v-if="exam" class="mx-auto pa-4 subject-info-card" max-width="600" elevation="12">
     <v-card-text>
-      <div class="text-h5">
+      <div class="text-h5 line-item">
         当前科目:<span class="text-h5 ml-2">{{ exam.name }}</span>
       </div>
-      <div class="text-h5">
+      <div class="text-h5 line-item">
         考试时间: {{ formatDateTime(exam.start) }} - {{ formatDateTime(exam.end) }}
       </div>
-      <div class="text-h5 mt-4">
+      <div class="text-h5 line-item">
         考试状态: <span :class="statusColor">{{ statusText }}</span>
       </div>
-      <div v-if="isWarning" class="text-h5 text--warning">考试即将结束</div>
-      <div v-if="showRemainingTime" :class="['text-h5', remainingTimeColorClass]">剩余时间: {{ remainingTime }}</div>
-      <div v-if="showCountdown" class="text-h5 text--info">倒计时: {{ countdown }}</div>
+      <div v-if="isWarning" class="text-h5 text--warning line-item">考试即将结束</div>
+      <div v-if="showRemainingTime" :class="['text-h5', remainingTimeColorClass, 'line-item']">
+        剩余时间: {{ remainingTime }}
+      </div>
+      <div v-if="showCountdown" class="text-h5 text--info line-item">倒计时: {{ countdown }}</div>
     </v-card-text>
   </v-card>
 
@@ -125,6 +127,10 @@ updateNow();
 <style scoped>
 .text-h5 {
   font-size: 2.5rem !important;
+}
+
+.line-item {
+  margin-bottom: 16px; /* 每行底部的统一间距 */
 }
 
 .text--default {
