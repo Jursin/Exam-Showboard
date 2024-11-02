@@ -3,7 +3,7 @@
 <image src="resources/icon.png" height="64"/>
 
 # dsz-exam-showboard-next
-# DSZ考试展板 next（原DSZ考试看板）
+# DSZ考试看板 next（原DSZ考试看板）
 
 ![WelcomePage](/.Screenshots/WelcomePage.jpg)
 ![ExamPage](/.Screenshots/ExamPage.jpg)
@@ -51,7 +51,7 @@
 ```json
 {
     "examName": "考试名称",
-    "message": "信息",
+    "message": "信息", //与考试名称同行居右，建议填考室号
     "examInfos": [
         {
             "name": "科目",
@@ -115,9 +115,9 @@ $ yarn build:linux
 
 ### Progress
 
-- 正在[`master`](https://github.com/MKStoler4096/dsz-exam-showboard-next/commits/master)分支上维护`1.1.0`版本。
+- 正在[`master`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/commits/master)分支上维护`1.3.0`版本。
 
-- 正在[`dev`](https://github.com/MKStoler4096/dsz-exam-showboard-next/commits/dev)分支上开发`1.1-Malkuth`版本。
+- 正在[`dev`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/commits/dev)分支上开发`1.3-Malkuth`版本。
 
 > [!note]
 > **如果dev模式页面不显示或按钮点击无效等问题，请连续刷新至少3次后再进行操作。build后没有此问题。**
