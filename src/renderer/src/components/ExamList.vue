@@ -78,7 +78,7 @@ const groupedExams = computed(() => {
     const examDate = new Date(exam.start).toLocaleDateString('zh-CN', {
       month: 'numeric',
       day: 'numeric'
-    }).replace('/', '月') + '日'; // 转换日期为"11月7日"格式
+    }).replace('/', '月') + '日';
     const period = formatPeriod(exam.start);
 
     const showDate = examDate !== currentDate || period !== currentPeriod;
