@@ -74,10 +74,11 @@ const groupedExams = computed(() => {
   let currentDate = '';
   let currentPeriod = '';
 
-  sortedExams.value.forEach((exam) => {
+  sortedExams.value.forEach((exam, index) => {
     const examDate = new Date(exam.start).toLocaleDateString('zh-CN', {
-      month: 'long',
+      month: 'numeric',
       day: 'numeric'
+    }).replace('/', '月') + '日'; // 转换日期为"11月7日"格式
     const period = formatPeriod(exam.start);
 
     const showDate = examDate !== currentDate || period !== currentPeriod;
@@ -87,7 +88,7 @@ const groupedExams = computed(() => {
       currentPeriod = period;
 
       const rowspan = sortedExams.value.filter(e => 
-        new Date(e.start).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' }) + '日' === currentDate &&
+        new Date(e.start).toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }).replace('/', '月') + '日' === currentDate &&
         formatPeriod(e.start) === currentPeriod
       ).length;
 
@@ -168,6 +169,11 @@ onMounted(() => {
 .exam-status-chip {
   font-size: 1.5rem !important;
   text-align: center;
+}
+
+.v-card {
+  overflow-x: auto;
+  max-width: 100%; /* 防止表格超出边界 */
 }
 
 /* 列样式 */
