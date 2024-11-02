@@ -4,13 +4,13 @@
       <v-col cols="12" md="4">
         <v-card class="pa-4 fade-in slide-in" outlined>
           <v-btn block color="deep-purple accent-4" dark @click="openDialog">打开配置</v-btn>
-          <p class="mt-2 text-center">打开 JSON 配置文件</p>
+          <p class="mt-2 text-center">打开 Json 配置文件</p>
         </v-card>
       </v-col>
       <v-col cols="12" md="4" class="mt-4 mt-md-0">
         <v-card class="pa-4 fade-in slide-in" outlined>
           <v-btn block color="teal accent-4" dark @click="gotoInfoPage">直接进入看板</v-btn>
-          <p class="mt-2 text-center">直接进入看板，将继续使用上次加载的配置</p>
+          <p class="mt-2 text-center">直接进入看板，继续使用上次加载的配置</p>
         </v-card>
       </v-col>
     </v-row>
