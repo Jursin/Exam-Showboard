@@ -5,25 +5,25 @@
 # dsz-exam-showboard-next
 # DSZ考试看板 next（原DSZ考试看板）
 
-![WelcomePage](/.Screenshots/WelcomePage.jpg)
-![ExamPage](/.Screenshots/ExamPage.jpg)
+![WelcomePage](Screenshots/WelcomePage.jpg)
+![ExamPage](Screenshots/ExamPage.jpg)
 
-[![stars](https://img.shields.io/github/stars/MKStoler4096/dsz-exam-showboard-next?label=Stars)](https://github.com/MKStoler4096/dsz-exam-showboard-next/stargazers)
-[![forks](https://img.shields.io/github/forks/MKStoler4096/dsz-exam-showboard-next?label=Forks)](https://github.com/MKStoler4096/dsz-exam-showboard-next/forks)
-[![Watchers](https://img.shields.io/github/watchers/MKStoler4096/dsz-exam-showboard-next?style=social)](https://github.com/MKStoler4096/dsz-exam-showboard-next/watchers)
-[![Downloads](https://img.shields.io/github/downloads/MKStoler4096/dsz-exam-showboard-next/total?style=social&label=Downloads&logo=github)](https://github.com/MKStoler4096/dsz-exam-showboard-next/releases)
-[![GitHub Issues](https://img.shields.io/github/issues-search/MKStoler4096/dsz-exam-showboard-next?query=is%3Aopen&style=social-square&logo=github&label=Issues&color=%233fb950)](https://github.com/MKStoler4096/dsz-exam-showboard-next/issues)
-[![GitHub Discussions](https://img.shields.io/github/discussions/MKStoler4096/dsz-exam-showboard-next?style=flat&logo=Github&label=Discussions)](https://github.com/MKStoler4096/dsz-exam-showboard-next/discussions)
-[![Created At](https://img.shields.io/github/created-at/MKStoler4096/dsz-exam-showboard-next)](https://github.com/MKStoler4096/dsz-exam-showboard-next)
-[![Github Last Commit](https://img.shields.io/github/last-commit/MKStoler4096/dsz-exam-showboard-next)](https://github.com/MKStoler4096/dsz-exam-showboard-next/commits/master)
-[![GitHub Language Count](https://img.shields.io/github/languages/count/MKStoler4096/dsz-exam-showboard-next)](https://github.com/MKStoler4096/dsz-exam-showboard-next)
-[![GitHub Top Language](https://img.shields.io/github/languages/top/MKStoler4096/dsz-exam-showboard-next)](https://github.com/MKStoler4096/dsz-exam-showboard-next)
+[![stars](https://img.shields.io/github/stars/ProjectCampus-CH/dsz-exam-showboard-next?label=Stars)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/stargazers)
+[![forks](https://img.shields.io/github/forks/ProjectCampus-CH/dsz-exam-showboard-next?label=Forks)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/forks)
+[![Watchers](https://img.shields.io/github/watchers/ProjectCampus-CH/dsz-exam-showboard-next?style=social)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/watchers)
+[![Downloads](https://img.shields.io/github/downloads/ProjectCampus-CH/dsz-exam-showboard-next/total?style=social&label=Downloads&logo=github)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/releases)
+[![GitHub Issues](https://img.shields.io/github/issues-search/ProjectCampus-CH/dsz-exam-showboard-next?query=is%3Aopen&style=social-square&logo=github&label=Issues&color=%233fb950)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/issues)
+[![GitHub Discussions](https://img.shields.io/github/discussions/ProjectCampus-CH/dsz-exam-showboard-next?style=flat&logo=Github&label=Discussions)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/discussions)
+[![Created At](https://img.shields.io/github/created-at/ProjectCampus-CH/dsz-exam-showboard-next)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next)
+[![Github Last Commit](https://img.shields.io/github/last-commit/ProjectCampus-CH/dsz-exam-showboard-next)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/commits/master)
+[![GitHub Language Count](https://img.shields.io/github/languages/count/ProjectCampus-CH/dsz-exam-showboard-next)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next)
+[![GitHub Top Language](https://img.shields.io/github/languages/top/ProjectCampus-CH/dsz-exam-showboard-next)](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next)
 [![LICENSE](https://img.shields.io/badge/License-GPL--3.0-red.svg "LICENSE")](LICENSE)
 [![QQ群](https://img.shields.io/badge/-QQ%E7%BE%A4%EF%BD%9C901670561-blue?style=flat&logo=TencentQQ&logoColor=white)](https://qm.qq.com/q/zDiEipHsaI)
 
 一款显示当前时间与考试详细信息的看板类软件
 
-| 下载 | [Releases](https://github.com/MKStoler4096/dsz-exam-showboard-next/releases) | [Actions](https://github.com/MKStoler4096/dsz-exam-showboard-next/actions) |
+| 下载 | [Releases](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/releases) | [Actions](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/actions) |
 | - | - | - |
 
 </div>
@@ -71,11 +71,11 @@
 
 ## 遇到问题
 
-💡 如果您遇到`Bug`，或需要提出`优化`建议或新的`功能`，请提交[`Issues`](https://github.com/MKStoler4096/dsz-exam-showboard-next/issues)或在[`Discussions`](https://github.com/MKStoler4096/dsz-exam-showboard-next/discussions)中讨论。
+💡 如果您遇到`Bug`，或需要提出`优化`建议或新的`功能`，请提交[`Issues`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/issues)或在[`Discussions`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/discussions)中讨论。
 
 👥 您也可以加入[`QQ群｜901670561`](https://qm.qq.com/q/zDiEipHsaI)获取帮助或交流讨论。
 
-🛠️ 欢迎为本软件进行改进或编写新功能提交[`Pull Request`](https://github.com/MKStoler4096/dsz-exam-showboard-next/pulls)
+🛠️ 欢迎为本软件进行改进或编写新功能提交[`Pull Request`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/pulls)
 
 ## 开发
 
@@ -115,19 +115,17 @@ $ yarn build:linux
 
 ### Progress
 
-- 正在[`master`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/commits/master)分支上维护`1.3.0`版本。
-
-- 正在[`dev`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/commits/dev)分支上开发`1.3-Malkuth`版本。
+- 正在[`master`](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next/commits/master)分支上开发`1.3.0`版本。
 
 > [!note]
 > **如果dev模式页面不显示或按钮点击无效等问题，请连续刷新至少3次后再进行操作。build后没有此问题。**
 
 ## Stars 历史
 
-[![Star 历史](https://starchart.cc/MKStoler4096/dsz-exam-showboard-next.svg?variant=adaptive)](https://starchart.cc/MKStoler4096/dsz-exam-showboard-next)
+[![Star 历史](https://starchart.cc/ProjectCampus-CH/dsz-exam-showboard-next.svg?variant=adaptive)](https://starchart.cc/ProjectCampus-CH/dsz-exam-showboard-next)
 
 <div align="center">
 
-如果这个项目对您有帮助，请点亮 Star [⭐](#dsz-exam-showboard-next)
+如果这个项目对您有帮助，请点亮 Star [⭐](https://github.com/ProjectCampus-CH/dsz-exam-showboard-next)
 
 </div>
