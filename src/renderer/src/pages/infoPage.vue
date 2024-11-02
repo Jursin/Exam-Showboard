@@ -1,8 +1,11 @@
 <template>
   <v-container class="main-area">
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" class="d-flex justify-space-between align-center">
+        <!-- 考试名称，左对齐 -->
         <h1 class="large-title">{{ globalStore.examName }}</h1>
+        
+        <!-- 辅助信息，右对齐，字号为考试名称的0.9倍 -->
         <h2 class="medium-title">{{ globalStore.message }}</h2>
       </v-col>
     </v-row>
@@ -75,6 +78,6 @@ onUnmounted(() => {
 }
 
 .medium-title {
-  font-size: 1em; /* 略小一点的h2文字 */
+  font-size: calc(3em * 0.9); /* 辅助信息字体为考试名称字体的0.9倍 */
 }
 </style>
