@@ -74,9 +74,9 @@ const groupedExams = computed(() => {
   let currentDate = '';
   let currentPeriod = '';
 
-  sortedExams.value.forEach((exam, index) => {
+  sortedExams.value.forEach((exam) => {
     const examDate = new Date(exam.start).toLocaleDateString('zh-CN', {
-      month: 'numeric',
+      month: 'long',
       day: 'numeric'
     }) + '日';
     const period = formatPeriod(exam.start);
@@ -88,7 +88,7 @@ const groupedExams = computed(() => {
       currentPeriod = period;
 
       const rowspan = sortedExams.value.filter(e => 
-        new Date(e.start).toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }) + '日' === currentDate &&
+        new Date(e.start).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' }) + '日' === currentDate &&
         formatPeriod(e.start) === currentPeriod
       ).length;
 
