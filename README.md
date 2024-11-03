@@ -2,8 +2,8 @@
 
 <image src="resources/icon.png" height="64"/>
 
-# dsz-exam-showboard-next
-# DSZ考试看板 next（原DSZ考试看板）
+# Exam-showboard
+# 考试看板（原 DSZ 考试看板）
 
 ![WelcomePage](Screenshots/WelcomePage.jpg)
 ![ExamPage](Screenshots/ExamPage.jpg)
