@@ -10,11 +10,11 @@
       <div class="text-h5 line-item">
         考试状态: <span :class="statusColor">{{ statusText }}</span>
       </div>
+      <div v-if="showCountdown" class="text-h5 text--info line-item">倒计时: {{ countdown }}</div>
       <div v-if="isWarning" class="text-h5 text--warning line-item">考试即将结束</div>
       <div v-if="showRemainingTime" :class="['text-h5', remainingTimeColorClass, 'line-item']">
         剩余时间: {{ remainingTime }}
       </div>
-      <div v-if="showCountdown" class="text-h5 text--info line-item">倒计时: {{ countdown }}</div>
     </v-card-text>
   </v-card>
 
