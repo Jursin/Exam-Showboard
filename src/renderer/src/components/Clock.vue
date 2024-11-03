@@ -16,7 +16,7 @@ import moment from 'moment';
 // 使用ref来存储当前时间
 const formattedTime = ref('');
 const fontSizeIndex = ref(2); // 默认字体大小索引
-const fontSizes = ['5rem', '7rem', '9rem']; // 增加更大的字体
+const fontSizes = ['3rem', '5rem', '7rem']; // 增加更大的字体
 
 // 在页面加载完成后初始化时间
 onMounted(() => {
