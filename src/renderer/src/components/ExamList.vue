@@ -12,7 +12,7 @@
             class="text-h5"
           >
             <template #item="{ item }">
-              <tr :style="{ lineHeight: '2.5rem' }">
+              <tr :style="{ lineHeight: '2.0rem' }">
                 <td v-if="item.showDate" class="text-h5 date-column" :rowspan="item.rowspan">
                   {{ item.date }}<br>{{ item.period }}
                 </td>
@@ -154,8 +154,8 @@ onMounted(() => {
 
 .v-card {
   overflow-x: auto;
-  max-width: 100%; /* 防止表格超出边界 */
-  padding-right: 8px; /* 调整右边距 */
+  max-width: 100%;
+  padding-right: 8px;
 }
 
 /* 列样式 */
@@ -165,22 +165,22 @@ onMounted(() => {
 .status-column {
   white-space: nowrap;
   text-align: center;
-  padding: 10px 0; /* 设置上下内边距以统一行高 */
+  padding: 15px 0;
 }
 
 .date-column {
-  width: 90px;
+  width: 70px;
 }
 
 .subject-column {
-  width: 130px;
+  width: 110px;
 }
 
 .time-column {
-  width: 80px;
+  width: 70px;
 }
 
 .status-column {
-  width: 90px;
+  width: 80px;
 }
 </style>
