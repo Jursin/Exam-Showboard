@@ -35,14 +35,11 @@
 
 ## 功能
 
-- 起始页展示 `打开配置` 、 `直接进入看板` 按钮
-- 看板页面
-  - 上方展示 `考试标题` 、 `信息`
-  - 左侧展示 `当前时间` 、 `当前科目` 、 `考试时间` 、 `考试状态`
-  - 右侧展示考试科目列表，包括 `科目` 、 `开始` 、 `结束` 、 `状态`
-  - 考试结束前15分钟黄字提醒
-  - 集控功能（早期测试）
-  - 设置页面（正在开发）
+- 上方展示 `考试标题` 、 `信息` 、 `考场号`
+- 左侧展示 `当前时间` 、 `当前科目` 、 `考试时间` 、 `考试状态`
+- 右侧展示考试科目列表，包括 `科目` 、 `开始` 、 `结束` 、 `状态`
+- 集控功能**（早期测试）**
+- 设置页面**（开发中）**
 
 ## 开始使用
 
@@ -184,6 +181,6 @@ $ yarn build:linux
 
 [![Star 历史](https://starchart.cc/ProjectCampus-CH/dsz-exam-showboard-next.svg?variant=adaptive)](https://starchart.cc/ProjectCampus-CH/dsz-exam-showboard-next/stargazers)
 
-如果这个项目对您有帮助，请点亮 Star [⭐](#dsz-exam-showboard-next)
+如果这个项目对您有帮助，请点亮 Star [⭐](#examshowboard-next)
 
 </div>
